@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /pilot
+Disallow: /downloads/
+
+Sitemap: https://openotis.co.za/sitemap.xml
