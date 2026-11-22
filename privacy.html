@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy · Otis</title>
+<meta name="description" content="How Otis handles your information: it runs on your computer, uses the AI engine and apps you connect, and has no servers of its own that see your data.">
+<link rel="canonical" href="https://openotis.co.za/privacy">
+<link rel="icon" href="assets/favicon.png">
+<style>
+:root {
+  --bg: #faf6f0; --surface: #fffdf9; --fg: #10162e; --muted: #59617a; --line: rgb(16 22 46 / .1); --blue: #2563eb;
+  --display: "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+  --body: "Segoe UI", system-ui, sans-serif;
+  --mono: "Cascadia Code", Consolas, ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root { --bg: #0a0f20; --surface: #11182e; --fg: #eef1f8; --muted: #a1aac2; --line: rgb(238 241 248 / .1); --blue: #6b9bff; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.65; }
+.wrap { width: min(46rem, 100%); margin: 0 auto; padding: 0 max(20px, env(safe-area-inset-left)); }
+nav { border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; align-items: center; height: 64px; }
+.logo { display: flex; align-items: center; gap: .55rem; font-family: var(--display); font-weight: 800; font-size: 1.35rem; text-decoration: none; color: inherit; }
+.logo img { width: 34px; height: 34px; }
+main { padding-block: 3rem 5rem; }
+h1, h2 { font-family: var(--display); line-height: 1.1; letter-spacing: -.02em; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); margin: .3rem 0 1rem; }
+h2 { font-size: 1.35rem; margin: 2.4rem 0 .5rem; }
+p, li { color: var(--muted); }
+strong { color: var(--fg); }
+a { color: var(--blue); }
+.eyebrow { font-family: var(--mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); }
+footer { border-top: 1px solid var(--line); padding-block: 2rem; color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a class="logo" href="./"><img src="assets/otis-icon.png" alt="">Otis</a></div></nav>
+<main class="wrap">
+  <p class="eyebrow">Privacy policy · Updated 11 November 2026</p>
+  <h1>Your information stays yours.</h1>
+  <p>Otis is a desktop app that runs on your own computer. This page explains what it uses, where that goes, and what stays with you. It applies to the Otis app (early access) and this website.</p>
+
+  <h2>The short version</h2>
+  <ul>
+    <li><strong>Otis has no servers of its own that see your data.</strong> Your chats, files and settings are stored on your computer.</li>
+    <li><strong>Answers come from the AI engine you choose</strong> (Claude Code from Anthropic, or Codex from OpenAI). Provider usage is billed by the provider under the connected account; business use should use API billing or an integration approved for Otis.</li>
+    <li><strong>Apps you connect</strong> (calendar, email, chat, tasks) are reached directly from your computer, with your own sign-ins.</li>
+    <li><strong>Nothing is sent, changed or deleted without your OK</strong>, unless you choose to allow that kind of action.</li>
+    <li>No advertising, no selling of data, or automatic usage telemetry.</li>
+  </ul>
+
+  <h2>What stays on your computer</h2>
+  <p>Your conversations with Otis, the documents it saves in your Otis folder, your skills, workflows and permission choices, and the list of apps you've connected. Access tokens you give Otis for connected apps are kept on your computer and are never shown back in the app. The app's pairing credentials are kept in your system's secure credential store.</p>
+  <p>When you enter an OpenAI API key for Codex, Otis sends it once to the local Codex CLI over stdin. Otis does not retain the key; Codex stores authentication in the operating system keychain. Provider CLI authentication and billing are managed by Anthropic or OpenAI.</p>
+
+  <h2>Removing Otis data</h2>
+  <p>Uninstalling the app alone does not remove the local host data or files Otis saved. To clear them, quit Otis, remove each saved host in Settings → General → Hosts, then delete the local host folder:</p>
+  <ul>
+    <li>Windows: <code>%APPDATA%\Otis\windows-host</code></li>
+    <li>Mac: <code>~/.otis-mac-host</code></li>
+  </ul>
+  <p>The AI engine keeps its own copy of each conversation it handled. Claude Code stores session transcripts under <code>~/.claude/projects</code> (Windows: <code>%USERPROFILE%\.claude\projects</code>); Codex stores them under <code>~/.codex/sessions</code>. When you delete a chat or a message in Otis, Otis also deletes the matching Claude Code transcript on this computer; Codex transcripts and anything the provider keeps on its own servers are outside Otis's reach, so delete those folders yourself, or use the provider's own tools, if you want them gone. The host also keeps a short <code>host.log</code> in its folder (technical errors only, no chat text or tokens); it is removed with the folder.</p>
+  <p>Files Otis saved are separate: delete <code>Documents\Otis</code> on Windows or <code>~/Documents/Otis</code> on Mac only if you no longer want those files. After deleting local data, remove any remaining Otis entries from Windows Credential Manager (service <code>io.openotto.windows</code>) or macOS Keychain (service <code>io.openotto.mac</code>); these can include the host encryption key and saved pairing credentials. Removing a host from this computer does not erase data on a remote host, and removing local sign-in tokens does not revoke an app grant at Microsoft, Google, Slack or another connected service. Revoke those grants in the service's account settings if you want to stop them there too.</p>
+
+  <h2>Optional pilot progress report</h2>
+  <p>You can rate a completed Otis result as useful, partly useful or not useful. Ratings are saved only on that Otis host and are not uploaded. A rating is linked to its run locally so it can appear on that conversation; it contains no chat text or explanation. You can choose Settings → General → Share pilot progress to save a 30-day summary on your computer. It covers activity recorded on that Otis host only; it cannot show whether other testers installed or used Otis. It contains aggregate counts of runs started, completed, stopped or failed; workflow executions; active days; the time of the most recent run; and usefulness ratings recorded during the last 30 days. It also reports whether this host returned during days 8–14 after its first recorded run, based on run timestamps in local history. That return is an activity signal only, not proof that a task was useful or saved time. Ratings are self-reported and do not prove time saved or customer value. The report does not contain chat messages, chat titles, connector contents, email addresses or run identifiers. Otis does not upload this report. Review it and share it with the Otis team only if you choose.</p>
+
+  <h2>What goes to your AI engine</h2>
+  <p>To answer a request, Otis passes your message, recent messages from the same chat, and the information it reads to do the task (for example, a calendar event or an email) to the AI engine you connected. That engine runs under your account with Anthropic or OpenAI, and their terms and privacy policies apply to what they receive. You can change or disconnect the engine at any time in Settings → AI engine.</p>
+
+  <h2>Connected apps</h2>
+  <p>When you turn on a connector, Otis can read from that app when a task needs it, and asks you before sending, changing or deleting anything there (unless you allow that action in Settings → Permissions). Turn a connector off, or remove it, to stop access. The sample workplace is made-up data and never leaves your computer; “sent” sample emails are saved in your Otis folder.</p>
+
+  <h2>Updates and downloads</h2>
+  <p>Installers are downloaded from this website, which is hosted on GitHub Pages. When automatic updates are switched on, the app checks GitHub for a newer version; that request includes your app version and platform, as any download does. GitHub may log your IP address when you visit or download, under GitHub's privacy statement.</p>
+
+  <h2>This website</h2>
+  <p>This site itself doesn't use analytics cookies, tracking scripts or external font services. Submitting an invite or feedback form sends the details you enter (such as your name, email and answers) directly to Web3Forms, a third-party service that emails the submission to the configured Otis inbox. See the current <a href="https://web3forms.com/privacy">Web3Forms privacy policy</a> for its handling details; its policy and processing terms can change.</p>
+  <ul>
+    <li>Web3Forms identifies Web3Creative as the processor for form submissions.</li>
+    <li>Its policy says submitted form data may be retained for up to three years.</li>
+    <li>It processes submissions and notification emails using infrastructure providers including AWS, Cloudflare and Hetzner.</li>
+    <li>Submitters' IP addresses and email addresses may be shared with spam-prevention services.</li>
+    <li>Web3Forms says it operates from India and its infrastructure may process data in multiple regions.</li>
+  </ul>
+  <p>We use submissions to qualify requests, contact you, administer a pilot and learn whether Otis and its proposed prices are useful. We keep received messages in an access-restricted email inbox and any coded pilot-tracker record in a private location, and remove our copies when they are no longer needed. You can ask us to remove copies in our control. Web3Forms' copies follow its own retention and deletion terms. Invite-form task descriptions and pilot feedback text are limited to 500 characters; app lists are limited to 160 characters. The invite form optionally asks how often the task occurs, how long it takes, how you handle it today, whether you've tried an AI assistant on it, and who would use Otis. Please don't include client names, private messages, prompts, documents, account details, passwords or confidential work information. If the invite link has an opaque pilot code, the form includes it with your submission so we can match your reply to the pilot; it does not record visits, downloads, installs or app activity. A pricing answer is not a purchase commitment.</p>
+
+  <h2>Children</h2>
+  <p>Otis is not meant for children under 13, and is subject to the age requirements of the AI engine you connect.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, we'll update it here and change the date at the top.</p>
+
+  <h2>Questions</h2>
+  <p id="ask">Ask a question or report a concern on <a href="https://github.com/openotis/otis-web/issues">the Otis GitHub page</a>.</p>
+</main>
+<footer><div class="wrap"><a href="./">← Back to Otis</a></div></footer>
+<script>
+  // Same address as on the home page; leave empty to point people to GitHub.
+  const CONTACT_EMAIL = "branwinne@gmail.com";
+  if (CONTACT_EMAIL) document.getElementById("ask").innerHTML = `Email <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.`;
+</script>
+</body>
+</html>

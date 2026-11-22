@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Otis · Client meeting prep and follow-through</title>
+<meta name="description" content="Otis helps independent professionals prepare for client meetings and draft follow-ups using relevant work context, with you in control.">
+<link rel="canonical" href="https://openotis.co.za/">
+<meta property="og:title" content="Otis · Client meeting prep and follow-through">
+<meta property="og:description" content="Prepare for client meetings and draft follow-ups using relevant work context, with you in control.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://openotis.co.za/">
+<meta property="og:image" content="https://openotis.co.za/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Otis robot illustration for a desktop work assistant.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://openotis.co.za/assets/og-image.jpg">
+<link rel="icon" href="assets/favicon.png">
+<style>
+/* Layout: one long page — hero, a day with Otis, control, tools, privacy, moods, request an invite.
+   Open early access (22 Nov 2026): free downloads for Windows and Android here; the pilot page holds install help and feedback. */
+:root {
+  --bg: #faf6f0; --surface: #fffdf9; --raised: #f1eadf; --fg: #10162e; --muted: #59617a; --line: rgb(16 22 46 / .1);
+  --blue: #2563eb; --blue-ink: #ffffff; --blue-soft: rgb(37 99 235 / .1); --navy: #0e1430; --amber: #b4660f; --amber-soft: rgb(242 163 58 / .16);
+  --display: "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+  --body: "Segoe UI", system-ui, sans-serif;
+  --mono: "Cascadia Code", Consolas, ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg: #0a0f20; --surface: #11182e; --raised: #18213d; --fg: #eef1f8; --muted: #a1aac2; --line: rgb(238 241 248 / .1);
+  --blue: #6b9bff; --blue-ink: #0a0f20; --blue-soft: rgb(107 155 255 / .14); --navy: #050816; --amber: #f2a33a; --amber-soft: rgb(242 163 58 / .14);
+  color-scheme: dark; } }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; } /* headings land below the sticky nav */
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+.wrap { width: min(72rem, 100%); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
+h1, h2, h3 { font-family: var(--display); line-height: 1.05; letter-spacing: -.02em; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; }
+h3 { font-size: 1.3rem; font-weight: 600; letter-spacing: -.01em; }
+p { margin: 0; }
+.eyebrow { font-family: var(--mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); }
+.lead { font-size: 1.2rem; color: var(--muted); max-width: 38rem; }
+section { padding-block: clamp(4rem, 9vw, 7rem); }
+
+/* nav */
+nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; align-items: center; gap: 1.5rem; height: 64px; }
+.logo { display: flex; align-items: center; gap: .55rem; font-family: var(--display); font-weight: 800; font-size: 1.35rem; text-decoration: none; }
+.logo img { width: 34px; height: 34px; }
+nav .links { display: flex; gap: 1.4rem; margin-left: auto; font-size: .95rem; }
+nav .links a { text-decoration: none; color: var(--muted); }
+nav .links a:hover { color: var(--fg); }
+.btn { display: inline-flex; align-items: center; gap: .5rem; padding: .8rem 1.3rem; border-radius: 999px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--line); background: var(--surface); }
+.btn.primary { background: var(--blue); color: var(--blue-ink); border-color: transparent; }
+.btn.small { padding: .5rem 1rem; font-size: .92rem; }
+.btn:hover { transform: translateY(-1px); } .btn { transition: transform .15s; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+@media (max-width: 720px) { nav .links a:not(.btn) { display: none; } }
+
+/* hero */
+.hero { padding-block: clamp(3rem, 7vw, 6rem) clamp(3rem, 6vw, 5rem); }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 3rem; align-items: center; }
+.hero h1 { font-size: clamp(2.5rem, 5.6vw, 4.4rem); font-weight: 800; }
+.hero h1 em { font-style: normal; color: var(--blue); }
+.hero .lead { margin-top: 1.4rem; }
+.cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+.fine { font-size: .88rem; color: var(--muted); margin-top: 1rem; }
+.hero-art { position: relative; }
+.hero-art img { width: min(26rem, 100%); margin-inline: auto; filter: drop-shadow(0 30px 40px rgb(16 22 46 / .18)); }
+.bubble { position: absolute; left: -1rem; bottom: 12%; max-width: 15rem; background: var(--surface); border: 1px solid var(--line); border-radius: 18px 18px 18px 4px; padding: .8rem 1rem; font-size: .92rem; box-shadow: 0 12px 30px rgb(16 22 46 / .12); }
+.bubble b { display: block; font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); }
+@media (max-width: 820px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } .bubble { left: 0; } }
+
+/* a day with Otis */
+.day { background: var(--surface); border-block: 1px solid var(--line); }
+.day-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-top: 3rem; }
+.moment { display: flex; flex-direction: column; gap: .6rem; padding: 1.2rem; border-radius: 22px; background: var(--bg); border: 1px solid var(--line); min-width: 0; }
+.moment img { width: 9rem; height: 9rem; object-fit: contain; align-self: center; }
+.moment .time { font-family: var(--mono); font-size: .75rem; color: var(--muted); }
+.moment q { font-family: var(--display); font-weight: 600; font-size: 1.1rem; quotes: "“" "”"; }
+.moment p { color: var(--muted); font-size: .95rem; }
+@media (max-width: 900px) { .day-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .day-grid { grid-template-columns: 1fr; } }
+
+/* control */
+.split { display: grid; grid-template-columns: .9fr 1.1fr; gap: 3.5rem; align-items: center; }
+.split.flip { grid-template-columns: 1.1fr .9fr; }
+.points { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: 1.1rem; }
+.points li { display: grid; grid-template-columns: 2rem 1fr; gap: .8rem; }
+.points .tick { width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center; background: var(--blue-soft); color: var(--blue); font-weight: 700; }
+.points b { display: block; }
+.points span { color: var(--muted); font-size: .97rem; }
+.phone-shot { width: min(100%, 260px); height: auto; justify-self: center; border-radius: 28px; }
+.shot { border-radius: 18px; border: 1px solid var(--line); box-shadow: 0 30px 60px rgb(16 22 46 / .16); overflow: hidden; }
+.card-demo { position: relative; }
+.card-demo .needs { position: absolute; right: -1.5rem; top: -3.5rem; width: 9rem; filter: drop-shadow(0 16px 24px rgb(16 22 46 / .2)); }
+@media (max-width: 900px) { .split, .split.flip { grid-template-columns: 1fr; } .card-demo .needs { right: 0; width: 6.5rem; top: -3rem; } }
+
+/* tools */
+.tools { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2rem; }
+.tool { padding: .65rem 1.1rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-weight: 600; }
+.tool.soon { color: var(--muted); font-weight: 500; }
+
+/* privacy */
+.dark-band { background: var(--navy); color: #eef1f8; }
+.dark-band .lead, .dark-band .muted { color: #a9b2ca; }
+.dark-band .eyebrow { color: #8fb2ff; }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.fact { border-top: 2px solid #2f6bff; padding-top: 1rem; }
+.fact h3 { color: #fff; margin-bottom: .4rem; }
+.fact p { color: #a9b2ca; font-size: .97rem; }
+@media (max-width: 820px) { .facts { grid-template-columns: 1fr; } }
+
+/* moods */
+.moods { display: flex; gap: 1rem; overflow-x: auto; padding: 1rem 0 1.5rem; margin-top: 2rem; scroll-snap-type: x mandatory; }
+.mood { flex: none; width: 10rem; text-align: center; scroll-snap-align: start; }
+.mood img { width: 9rem; height: 9rem; object-fit: contain; margin: 0 auto .4rem; transition: transform .2s; }
+.mood:hover img { transform: translateY(-6px) rotate(-3deg); }
+.mood span { font-family: var(--mono); font-size: .78rem; color: var(--muted); }
+
+/* download */
+.downloads { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.5rem; }
+.dl { padding: 1.4rem; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: .6rem; min-width: 0; }
+.dl .btn { margin-top: auto; justify-content: center; white-space: nowrap; text-align: center; }
+.dl p { color: var(--muted); font-size: .93rem; }
+/* The line under a download button can wrap to two lines (Mac); reserve that room on every card so the buttons line up. */
+.dl .btn + .fine { min-height: 3.4em; margin: 0; }
+.badge { align-self: flex-start; font-family: var(--mono); font-size: .7rem; letter-spacing: .08em; padding: .2rem .55rem; border-radius: 999px; background: var(--amber-soft); color: var(--amber); }
+.badge.go { background: var(--blue-soft); color: var(--blue); }
+@media (max-width: 900px) { .downloads { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .downloads { grid-template-columns: 1fr; } }
+.dl .notify { margin-top: auto; justify-content: center; }
+
+/* invite form */
+.invite { display: grid; grid-template-columns: 1.25fr .75fr; gap: 2rem; margin-top: 2.5rem; align-items: start; }
+.form { padding: 1.6rem; border-radius: 22px; background: var(--bg); border: 1px solid var(--line); display: grid; gap: 1rem; }
+.form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form label { display: grid; gap: .35rem; font-weight: 600; font-size: .95rem; }
+.form label small { font-weight: 400; color: var(--muted); }
+.form input[type=text], .form input[type=email], .form select, .form textarea { font: inherit; font-weight: 400; color: var(--fg); background: var(--surface); border: 1.5px solid var(--line); border-radius: 12px; padding: .7rem .85rem; width: 100%; }
+.form textarea { min-height: 7rem; resize: vertical; }
+.form .check { display: flex; gap: .6rem; align-items: flex-start; font-weight: 400; color: var(--muted); }
+.form .check input { margin-top: .35rem; }
+.form button { font: inherit; cursor: pointer; justify-self: start; }
+.form button[disabled] { opacity: .6; cursor: wait; }
+.form .status { font-size: .95rem; }
+.form .status.ok { color: var(--blue); font-weight: 600; }
+.form .status.err { color: var(--amber); }
+.hp { position: absolute; left: -9999px; }
+.side { display: grid; gap: 1rem; }
+@media (max-width: 900px) { .invite { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .form .row { grid-template-columns: 1fr; } }
+
+/* demo */
+.demo video { width: 100%; aspect-ratio: 1280 / 820; height: auto; display: block; background: var(--raised); }
+.demo .shot { margin-top: 2.5rem; }
+
+/* faq */
+.faq { margin-top: 2.5rem; display: grid; gap: .7rem; max-width: 50rem; }
+.faq details { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 1rem 1.2rem; }
+.faq summary { cursor: pointer; font-family: var(--display); font-weight: 600; font-size: 1.12rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--blue); font-weight: 800; }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { color: var(--muted); margin-top: .7rem; }
+
+footer { border-top: 1px solid var(--line); padding-block: 2.5rem; color: var(--muted); font-size: .9rem; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; }
+footer .logo { color: var(--fg); font-size: 1.1rem; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="assets/otis-icon.png" alt="">Otis</a>
+    <div class="links">
+      <a href="#demo">See it</a><a href="#day">What it does</a><a href="#control">You're in control</a><a href="#faq">FAQ</a>
+      <a class="btn primary small" href="pilot#install">Download free</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">For independent professionals and small teams in South Africa · Free early access · Windows and Android</p>
+      <h1>AI for local business. <em>Nothing sent without your OK.</em></h1>
+      <p class="lead">Otis gathers meeting, email and available task context into a useful brief, then drafts a follow-up and next steps for you to review, as an email or a WhatsApp-ready message. Works with Microsoft 365 and Google. We help you set it up, and support you locally.</p>
+      <div class="cta">
+        <a class="btn primary" href="pilot#install">Download for Windows</a>
+        <a class="btn" href="pilot#android">Android app</a>
+        <a class="btn" href="#paid-pilot">Ask about the R999 pilot</a>
+        <a class="btn" href="#demo">Watch Otis work</a>
+      </div>
+      <p class="fine">Works with Claude Code or Codex. Provider usage is billed separately; business use should use provider API billing or an approved integration.</p>
+    </div>
+    <div class="hero-art">
+      <img src="assets/otis/hero.webp" alt="Otis, a small friendly robot with a dark visor and big eyes, waving" width="506" height="512">
+      <div class="bubble"><b>Otis</b>Your roadmap review is in 20 minutes. Sam wants a recommendation; I've drafted three questions.</div>
+    </div>
+  </div>
+</header>
+
+<section class="demo" id="demo">
+  <div class="wrap">
+    <p class="eyebrow">See it in action</p>
+    <h2>From “what's next?” to done, with you in charge.</h2>
+    <p class="lead" style="margin-top:1rem">Home, a meeting brief, an email waiting for your OK, and the same Otis on your phone. Shown with the built-in sample workplace.</p>
+    <div class="shot"><video src="assets/demo/otis-demo.mp4" poster="assets/shots/home.webp" autoplay muted loop playsinline preload="metadata" aria-label="A short clip of the Otis app: the Home screen, a meeting brief, an approval card for an email that is then sent, and the Otis phone app"></video></div>
+  </div>
+</section>
+
+<section class="day" id="day">
+  <div class="wrap">
+    <p class="eyebrow">A day with Otis</p>
+    <h2>One tap. Otis does the legwork.</h2>
+    <div class="day-grid">
+      <article class="moment">
+        <img src="assets/otis/thinking.webp" alt="" loading="lazy">
+        <span class="time">08:40</span><q>Prepare for my next meeting</q>
+        <p>Who's coming, what it's for, what they sent you, and the three questions worth asking.</p>
+      </article>
+      <article class="moment">
+        <img src="assets/otis/helping.webp" alt="" loading="lazy">
+        <span class="time">10:15</span><q>What needs my attention?</q>
+        <p>Your meetings, unread email and open tasks in one ranked list, with what to do about each.</p>
+      </article>
+      <article class="moment">
+        <img src="assets/otis/working.webp" alt="" loading="lazy">
+        <span class="time">14:00</span><q>Draft a one-page proposal</q>
+        <p>A clean first draft, saved straight to your Otis folder, ready for you to edit.</p>
+      </article>
+      <article class="moment">
+        <img src="assets/otis/done.webp" alt="" loading="lazy">
+        <span class="time">16:00, Fridays</span><q>Weekly wrap-up</q>
+        <p>A workflow that summarises your week and writes your status report, on a schedule.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="control">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">You're in control</p>
+      <h2>Otis asks before it acts.</h2>
+      <p class="lead" style="margin-top:1.2rem">By default, Otis previews actions that send, change or delete connected data. You can edit, approve or cancel, and choose how often Otis asks for each type of action.</p>
+      <ul class="points">
+        <li><span class="tick">1</span><div><b>See it first</b><span>“Otis wants to send this email to Sam”, with the whole email.</span></div></li>
+        <li><span class="tick">2</span><div><b>Edit, send or cancel</b><span>Fix a line before it goes. Cancel and nothing happens.</span></div></li>
+        <li><span class="tick">3</span><div><b>Set your permissions</b><span>Choose Always ask, Ask once a day, or Don't ask for each type of action. Otis records in chat when a permission lets it proceed without a card.</span></div></li>
+        <li><span class="tick">4</span><div><b>Workflows always ask</b><span>Scheduled runs never send anything without your OK.</span></div></li>
+      </ul>
+    </div>
+    <div class="card-demo">
+      <img class="shot" src="assets/shots/approval.webp" alt="The Otis app showing a card: Otis wants to send this email to Lindiwe, with Send, Edit, Send and allow today, and Cancel buttons" loading="lazy">
+      <img class="needs" src="assets/otis/needs.webp" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="day" id="tools">
+  <div class="wrap split flip">
+    <img class="shot" src="assets/shots/meeting-brief.webp" alt="Otis's meeting brief: who's attending, what it's for, a suggested position and three questions" loading="lazy">
+    <div>
+      <p class="eyebrow">Works with your tools</p>
+      <h2>Connects to the apps you already use.</h2>
+      <p class="lead" style="margin-top:1.2rem">Connect Microsoft 365, Google Workspace, Slack and more, or try the sample workplace first. Otis also supports MCP, an open way to add compatible tools.</p>
+      <div class="tools">
+        <span class="tool">Microsoft 365</span><span class="tool">Google Workspace</span><span class="tool">Slack</span>
+        <span class="tool">Jira</span><span class="tool">Asana</span><span class="tool">Notion</span><span class="tool soon">Any MCP server</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="phone">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">On your phone</p>
+      <h2>Talk to Otis from anywhere.</h2>
+      <p class="lead" style="margin-top:1.2rem">Tap the microphone and say what you need. Approve or cancel what Otis wants to send, and see that your computer is online. Your PC does the work; the phone just talks to it. Android app available now; iPhone later.</p>
+    </div>
+    <img class="shot phone-shot" src="assets/shots/phone.webp" alt="The Otis phone app: a large microphone button, 'Tap and tell Otis what you need', and an email waiting for your OK" width="540" height="903" loading="lazy">
+  </div>
+</section>
+
+<section class="dark-band" id="privacy">
+  <div class="wrap">
+    <p class="eyebrow">Privacy by design</p>
+    <h2>Otis runs from your computer.</h2>
+    <div class="facts">
+      <div class="fact"><h3>Your work stays in your workspace</h3><p>Otis saves documents in its folder on your PC or Mac. Otis has no central server that stores your connected app data.</p></div>
+      <div class="fact"><h3>You choose the AI account</h3><p>Otis sends your request and the connected information needed for the task to Claude or Codex under your account. Connector sign-ins are stored on your computer.</p></div>
+      <div class="fact"><h3>Review actions before they happen</h3><p>Connected actions show a preview by default. You choose per-action permissions; workflows always ask before external actions.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Meet Otis</p>
+    <h2>A little robot with a lot of moods.</h2>
+    <p class="lead" style="margin-top:1rem">You'll always know what Otis is up to.</p>
+    <div class="moods">
+      <div class="mood"><img src="assets/otis/hello.webp" alt=""><span>Hello</span></div>
+      <div class="mood"><img src="assets/otis/listening.webp" alt=""><span>Listening</span></div>
+      <div class="mood"><img src="assets/otis/thinking.webp" alt=""><span>Thinking</span></div>
+      <div class="mood"><img src="assets/otis/working.webp" alt=""><span>Working</span></div>
+      <div class="mood"><img src="assets/otis/needs.webp" alt=""><span>Needs your OK</span></div>
+      <div class="mood"><img src="assets/otis/helping.webp" alt=""><span>Got an idea</span></div>
+      <div class="mood"><img src="assets/otis/done.webp" alt=""><span>Done</span></div>
+      <div class="mood"><img src="assets/otis/more.webp" alt=""><span>Thanks</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="day" id="invite">
+  <span id="download"></span>
+  <div class="wrap">
+    <p class="eyebrow">Free early access</p>
+    <h2>Download Otis, or ask us to set it up.</h2>
+    <p class="lead" style="margin-top:1rem">Otis is free to try during early access. Download it below, then follow the <a href="pilot">install guide</a>. Prefer help? Tell us about your work with the form and we'll set it up with you, or ask about a supported, paid pilot.</p>
+    <div class="invite">
+      <form class="form" id="invite-form" novalidate>
+        <div class="row">
+          <label>Your name<input type="text" name="name" autocomplete="name" required></label>
+          <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        </div>
+        <div class="row">
+          <label>Company <small>(optional)</small><input type="text" name="company" autocomplete="organization" maxlength="120"></label>
+          <label>Your role <small>(optional)</small><input type="text" name="role" autocomplete="organization-title" maxlength="80"></label>
+        </div>
+        <div class="row">
+          <label>Your computer
+            <select name="computer" required>
+              <option value="">Choose…</option><option>Windows</option><option>Mac (Apple silicon)</option><option>Mac (Intel)</option><option>Mac (not sure which)</option><option>Both Windows and Mac</option>
+            </select></label>
+          <label>Your AI account
+            <select name="ai_account" required>
+              <option value="">Choose…</option><option>Claude Code with API billing</option><option>Codex with API billing</option><option>Both</option><option>Neither yet</option>
+            </select></label>
+        </div>
+        <label>What would you most want Otis to do for you?
+          <textarea name="use_case" required maxlength="500" placeholder="For example: prepare me for client meetings, keep my Jira tasks moving, write my weekly report…"></textarea></label>
+        <p class="fine" style="margin-top:-.5rem">Please don't include client names, private messages, account details or confidential work information.</p>
+        <label>Which apps do you work in every day? <small>(optional)</small>
+          <input type="text" name="apps" maxlength="160" placeholder="Outlook, Teams, Google Workspace, Slack, Jira…"></label>
+        <div class="row">
+          <label>How often does this task come up? <small>(optional)</small>
+            <select name="lead_workflow_frequency_code"><option value="">Choose…</option><option value="daily">Daily</option><option value="several_per_week">Several times a week</option><option value="weekly">About weekly</option><option value="less_than_weekly">Less than weekly</option><option value="unknown">Not sure</option></select>
+          </label>
+          <label>About how long does one run take today? <small>(optional)</small>
+            <select name="lead_time_per_run_code"><option value="">Choose…</option><option value="under_15m">Under 15 minutes</option><option value="15_30m">15–30 minutes</option><option value="31_60m">31–60 minutes</option><option value="over_60m">More than an hour</option><option value="unknown">Not sure</option></select>
+          </label>
+        </div>
+        <div class="row">
+          <label>How do you handle this task today? <small>(optional)</small>
+            <select name="current_solution_code"><option value="">Choose…</option><option value="manual">Mostly manually</option><option value="chatgpt">ChatGPT</option><option value="claude">Claude</option><option value="copilot">Microsoft Copilot</option><option value="gemini">Google Gemini</option><option value="other_ai">Another AI assistant</option><option value="agency_or_assistant">A person or agency helps</option><option value="mixed">A mix of tools or people</option><option value="none_yet">I don't have a regular approach yet</option><option value="unknown">Other or not sure</option></select>
+          </label>
+          <label>Have you tried an AI assistant on this exact task? <small>(optional)</small>
+            <select name="ai_agent_tried_for_workflow"><option value="">Choose…</option><option value="Yes">Yes</option><option value="No">No</option><option value="Unknown">Not sure</option></select>
+          </label>
+        </div>
+        <div class="row">
+          <label>Who would use Otis? <small>(optional)</small>
+            <select name="intended_users"><option value="">Choose…</option><option>Just me</option><option>2–5 people</option><option>6–20 people</option><option>21–50 people</option><option>More than 50 people</option></select>
+          </label>
+          <label id="paid-pilot">Would you like us to contact you about the paid pilot? <small>(optional)</small>
+            <small>Four weeks, one user, guided setup and two short reviews: R999 once, with founder support capped at 90 minutes. The invoice is due before setup. AI-provider charges are separate; it doesn't auto-renew. Choosing an option is not a purchase or commitment.</small>
+            <select name="paid_pilot_interest"><option value="">Choose…</option><option value="proposal_requested">Yes, send me the proposal</option><option value="discussion_requested">Maybe, I'd like to discuss it</option><option value="free_only">No, free early access only</option><option value="undecided">Not sure yet</option></select>
+          </label>
+        </div>
+        <label class="check"><input type="checkbox" name="feedback_ok" value="yes" required> I'm happy to try an early build and tell the Otis team what works and what doesn't.</label>
+        <input type="hidden" name="pilot_code" value="">
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn primary" type="submit">Send my request</button>
+        <p class="status" id="invite-status" role="status" aria-live="polite"></p>
+        <p class="fine">If your invite link has a pilot code, we include it with this form submission to match your reply. We don't track visits or downloads.</p>
+      </form>
+      <div class="side">
+        <div class="dl"><span class="badge go">FREE</span><h3>Windows</h3><p>Windows 10 and 11, 64-bit.</p>
+          <a class="btn primary" href="pilot#install">Download for Windows</a>
+          <p class="fine">Opens the download page with the installer, the MSI for IT teams, and step-by-step setup.</p></div>
+        <div class="dl"><span class="badge go">TEST</span><h3>Android</h3><p>Speak a request, approve Otis's actions and check on your computer from your phone. Install Otis on your PC first; needs Tailscale on both.</p>
+          <a class="btn" href="pilot#android">Download for Android</a></div>
+        <div class="dl"><span class="badge">COMING SOON</span><h3>Mac and iPhone</h3><p>Signed Mac builds and an iPhone app are next. Mention it in your request if you'd like to try them.</p></div>
+      </div>
+    </div>
+    <p class="fine">Otis uses Claude Code or Codex. Provider usage is billed separately; paid business pilots should use API billing or an approved integration. We only use your request to decide on invites and contact you about Otis. See the <a href="privacy">privacy policy</a>.</p>
+    <p class="fine">If the form doesn't work, <a href="mailto:branwinne@gmail.com?subject=Otis%20invite%20request">email us to request an invite</a>.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <p class="eyebrow">Questions</p>
+    <h2>Good to know.</h2>
+    <div class="faq">
+      <details><summary>How do I get Otis?</summary><p>Download it free for <a href="pilot#install">Windows</a>, and the <a href="pilot#android">Android app</a> if you want Otis on your phone. The <a href="pilot">install guide</a> walks you through setup. Prefer help? <a href="#invite">Tell us about your work</a> and we'll set it up with you.</p></details>
+      <details><summary>What do I need?</summary><p>A Windows 10 or 11 PC (Mac is coming soon), plus Claude Code or Codex. Provider usage is billed separately. Paid business pilots should use provider API billing or an integration explicitly approved for Otis. In Otis, open Settings → AI engine and choose Connect.</p></details>
+      <details><summary>What does it cost?</summary><p>Selected early-access testers can use Otis for free. There is also a supported four-week business pilot for one user at R999 once. It includes guided setup and two short reviews, with founder support capped at 90 minutes. It is invoiced before setup and does not renew automatically. The current continuation price hypothesis is R299 per user per month, invoiced manually if you choose to continue. AI-provider usage is separate and is not included; paid business use should use provider API billing or an integration explicitly approved for Otis. Personal subscription sign-in is for evaluation unless the provider approves that use. These prices are being tested and are not validated rates.</p></details>
+      <details><summary>Does Otis send my work data to an AI provider?</summary><p>Yes. To answer, Otis sends your request and the connected information needed for the task to the AI engine you chose, under your account with that provider. Otis does not run its own central data server. Read the <a href="privacy">privacy policy</a> for details.</p></details>
+      <details><summary>Will Otis do things without asking?</summary><p>Reading connected information and saving files in the Otis folder do not require approval. Connected actions that send, change or delete data show a card by default. You can set permissions to always ask, ask once a day, or not ask; Otis says in chat when it proceeds under a permission. Scheduled workflows always ask before external actions.</p></details>
+      <details><summary>Why does Windows or my Mac warn me when I install it?</summary><p>Early access builds aren't code-signed yet, so Windows shows “Windows protected your PC” (choose More info → Run anyway) and macOS says it can't check Otis for malicious software (open System Settings → Privacy &amp; Security and choose Open Anyway). Signed builds are on the way.</p></details>
+      <details><summary>Is there a phone app?</summary><p>Yes, for Android, as a test app: <a href="pilot#android">download it here</a>. Tap the microphone and say what you need, approve or cancel Otis's actions, and see whether your computer is online. It connects to Otis on your PC through Tailscale, a free private-network app. iPhone comes later. Mention it in your <a href="#invite">invite request</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="assets/otis-icon.png" alt="" width="26" height="26">Otis</a>
+    <span>© <span id="year">2026</span> Otis</span>
+    <a href="https://github.com/openotis/otis-web">GitHub</a>
+    <a href="privacy">Privacy</a>
+    <a href="#faq">FAQ</a>
+    <a id="contact" href="mailto:branwinne@gmail.com?subject=Otis">Contact</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  // Contact address used by the mail link and as the FormSubmit fallback destination. The configured
+  // Web3Forms key below is used for form submissions; the form provider can be changed here.
+  const INVITE_INBOX = "branwinne@gmail.com";
+  const contact = document.getElementById("contact");
+  contact.href = "mailto:" + INVITE_INBOX + "?subject=" + encodeURIComponent("Otis");
+
+  // Sent as a normal form post (not fetch), so there's no cross-site (CORS) check to fail. The
+  // configured form provider emails the answers and redirects back here with ?invite=thanks.
+  const form = document.getElementById("invite-form");
+  const status = document.getElementById("invite-status");
+  // Paste your Web3Forms access key here (free at web3forms.com: enter the inbox, the key arrives by
+  // email). With a key, forms go through Web3Forms; without one, through FormSubmit (formsubmit.co).
+  const WEB3FORMS_KEY = "6cbedd8a-e859-4a63-950a-1b8176b86669";
+  form.action = WEB3FORMS_KEY ? "https://api.web3forms.com/submit" : "https://formsubmit.co/" + INVITE_INBOX;
+  form.method = "POST";
+  if (WEB3FORMS_KEY) form.querySelector('[name="_honey"]').name = "botcheck";
+  const hidden = (name, value) => {
+    let input = form.querySelector(`input[type=hidden][name="${name}"]`);
+    if (!input) { input = document.createElement("input"); input.type = "hidden"; input.name = name; form.append(input); }
+    input.value = value;
+  };
+  const pilotCode = new URLSearchParams(location.search).get("pilot_ref") ?? "";
+  if (/^[A-Za-z0-9_-]{3,40}$/.test(pilotCode)) form.elements.namedItem("pilot_code").value = pilotCode;
+  const back = new URL(location.href); back.search = ""; back.hash = "";
+  back.searchParams.set("invite", "thanks"); back.hash = "invite";
+  if (WEB3FORMS_KEY) {
+    hidden("access_key", WEB3FORMS_KEY);
+    hidden("redirect", back.href);
+    hidden("from_name", "Otis website");
+  } else {
+    hidden("_next", back.href);
+    hidden("_template", "table");
+    hidden("_captcha", "false");
+  }
+  form.addEventListener("submit", (event) => {
+    if (!form.checkValidity()) { event.preventDefault(); form.reportValidity(); return; }
+    const data = Object.fromEntries(new FormData(form));
+    hidden(WEB3FORMS_KEY ? "subject" : "_subject", `Otis invite request: ${data.name} (${data.computer})`);
+    form.querySelector("button").disabled = true;
+    status.className = "status"; status.textContent = "Sending…";
+  });
+  // On return from the form provider, say thanks and tidy the address bar.
+  if (new URLSearchParams(location.search).get("invite") === "thanks") {
+    status.className = "status ok"; status.textContent = "Thanks. Your request was submitted. We'll review it and follow up by email if we can include you. For a direct reply, email branwinne@gmail.com.";
+    history.replaceState(null, "", location.pathname + "#invite");
+    document.getElementById("invite").scrollIntoView();
+  }
+  // Coming back with the browser's Back button: make the button usable again.
+  window.addEventListener("pageshow", () => { form.querySelector("button").disabled = false; });
+</script>
+</body>
+</html>
